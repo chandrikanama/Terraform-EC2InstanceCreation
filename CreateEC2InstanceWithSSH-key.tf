@@ -15,13 +15,15 @@ provider "aws" {
 resource "aws_instance" "Test-Server" {
   ami           = "ami-0447a12f28fddb066"
   instance_type = "t2.micro"
-  key_name = "terraform_ec2_key"
+tags{
+name = "Test-server"
+
 }
 
-resource "aws_key_pair" "terraform_ec2_key" {
-	key_name = "terraform_ec2_key"
-	public_key = "${file("terraform_ec2_key.pub")}"
 }
+
+
+
 
 #### file ends here ####
 # terraform validate
